@@ -1,0 +1,20 @@
+name: Enforce Issue Link
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+jobs:
+  check-issue-link:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check if PR commit includes issue reference
+        run: |
+          echo "Checking PR body for issue reference..."
+          echo "${{ github.event.pull_request.title }}" > pr_body.txt
+          if grep -Ei '((fixes|closes|resolves)\s+#\d+)' pr_body.txt; then
+            echo "✅ PR description contains an issue reference."
+          else
+            echo "❌ PR must reference an issue using 'Fixes #<number>', 'Closes #<number>', or 'Resolves #<number>'."
+            exit 1
+          fi
