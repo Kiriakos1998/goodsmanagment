@@ -1,4 +1,3 @@
 package goodsmanagment.domain.model;
 
-public class Price {
-}
+public class Price {}
