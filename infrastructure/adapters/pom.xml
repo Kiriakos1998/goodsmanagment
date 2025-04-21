@@ -12,6 +12,7 @@
     <artifactId>adapters</artifactId>
     <modules>
         <module>repository-adapter</module>
+        <module>web-adapter</module>
     </modules>
     <groupId>goodsmanagment-infrastructure-adapters</groupId>
     <packaging>pom</packaging>
